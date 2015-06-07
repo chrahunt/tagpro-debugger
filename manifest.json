@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "name": "TagPro Debugger",
+  "short_name": "TP Debugger",
+  "version": "0.2.2",
+  "description": "This extension allows troubleshooting the minified TagPro JS",
+  "background": {
+    "scripts": [
+      "js/socket.io.js",
+      "js/messenger.js",
+      "js/background.js"
+    ]
+  },
+  "permissions": [
+    "*://*/*",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*.koalabeast.com/*",
+        "http://*.newcompte.fr/*",
+        "http://tangent.jukejuice.com/*"
+      ],
+      "js": [
+        "js/content-script.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "externally_connectable": {
+    "matches": [
+      "http://*.koalabeast.com/*",
+      "http://*.newcompte.fr/*",
+      "http://tangent.jukejuice.com/*"
+    ]
+  },
+  "web_accessible_resources" : [
+    "js/injected-script.js",
+    "js/messenger.js"
+  ]
+}
